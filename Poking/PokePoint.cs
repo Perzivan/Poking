@@ -18,7 +18,13 @@ namespace Poking
 		public int GetPoints (string text)
 		{
 			string numberText = GetTextNumber (text);
-			return int.Parse (numberText);
+
+			int result;
+			if (int.TryParse (numberText, out result)) {
+				return result;
+			} else {
+				return 0;
+			}
 		}
 
 		private string GetTextNumber (string text)
