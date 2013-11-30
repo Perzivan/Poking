@@ -111,7 +111,6 @@
     <Compile Include="Board.cs" />
     <Compile Include="Smiley.cs" />
     <Compile Include="PokePoint.cs" />
-    <Compile Include="PokeImage.cs" />
   </ItemGroup>
   <ItemGroup>
     <InterfaceDefinition Include="PokingViewController.xib" />
