@@ -14,7 +14,7 @@ namespace Poking
 	public partial class PokingViewController : UIViewController
 	{
 		private  Board _Board;
-		private static Smiley _Smiley;
+		private  Smiley _Smiley;
 		System.Timers.Timer _Timer;
 
 		public PokingViewController () : base ("PokingViewController", null)
