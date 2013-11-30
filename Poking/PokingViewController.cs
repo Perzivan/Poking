@@ -61,12 +61,8 @@ namespace Poking
 			View.Layer.AddSublayer (_Smiley.Layer);
 
 			_Timer = new System.Timers.Timer (2000);
-			//hmm is this aproach wrong? how are these kinds of timed animations best done. 
-			//How can I move the Image when it's on another thread?
 			_Timer.Elapsed += (sender, e) => {
-				CATransaction.Begin ();
 				MoveSmiley();
-				CATransaction.Commit ();
 			};
 
 			lblPoints.Text = "Points: 0";
@@ -91,7 +87,7 @@ namespace Poking
 			int height = _Board.Height - Convert.ToInt32(_Smiley.Layer.Frame.Height);
 
 			CATransaction.Begin ();
-			CATransaction.AnimationDuration = 2;
+			CATransaction.AnimationDuration = 0.3;
 
 			_Smiley.Layer.Position = _Smiley.GetNextPossition (width, height);
 
