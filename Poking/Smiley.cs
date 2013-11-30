@@ -8,6 +8,7 @@ namespace Poking
 	public class Smiley {
 		public RectangleF Rect { get;private set;}
 		public UIImage Image { get;private set;}
+		public PokeImage PokeImage { get;private set;}
 		private int MaxMoveX;
 		private int MaxMoveY;
 
@@ -17,6 +18,7 @@ namespace Poking
 			Point p = GetNextPossition (maxMoveX - width, maxMoveY - height);
 			Rect = new RectangleF (p.X, p.Y, width, height);
 			Image = new UIImage (imagePath);
+			PokeImage = new PokeImage (Rect, Image);
 		}
 
 		public void RandomMove(int width, int height) {
