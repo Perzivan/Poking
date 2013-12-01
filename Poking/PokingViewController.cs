@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 using System.Collections.Generic;
 using MonoTouch.CoreAnimation;
 using MonoTouch.CoreGraphics;
-
+using MonoTouch.AudioToolbox;
 
 
 namespace Poking
@@ -44,6 +44,7 @@ namespace Poking
 		
 				if (_Smiley.Layer.Frame.Contains (Location)) {
 					AddPoints (1);
+					SystemSound.Vibrate.PlaySystemSound ();
 					UIView.Animate (0.1, 0, UIViewAnimationOptions.CurveEaseIn, MoveSmiley, () => {
 					});
 				}
