@@ -13,7 +13,6 @@ namespace Poking
 {
 	public partial class PokingViewController : UIViewController
 	{
-		private  Board _Board;
 		private  Smiley _Smiley;
 		System.Timers.Timer _Timer;
 
@@ -55,8 +54,8 @@ namespace Poking
 			base.ViewDidLoad ();
 
 			// Perform any additional setup after loading the view, typically from a nib.
-			_Board = new Board (262, 365);
-			_Smiley = new Smiley ("smiley.png",34, 34,_Board.Width ,_Board.Height );
+
+			_Smiley = new Smiley ("smiley.png",GetMoveRectangle());
 
 			View.Layer.AddSublayer (_Smiley.Layer);
 
@@ -83,16 +82,19 @@ namespace Poking
 		 
 		private void MoveSmiley() 
 		{
-			int width = _Board.Width - Convert.ToInt32(_Smiley.Layer.Frame.Width);
-			int height = _Board.Height - Convert.ToInt32(_Smiley.Layer.Frame.Height);
-
 			CATransaction.Begin ();
 			CATransaction.AnimationDuration = 0.3;
 
-			_Smiley.Layer.Position = _Smiley.GetNextPossition (width, height);
+			_Smiley.Layer.Position = _Smiley.GetNextPossition ();
 
 			CATransaction.Commit ();
 
+		}
+
+		private RectangleF GetMoveRectangle() {
+			int maxWidth = Convert.ToInt32 (aBoard.Frame.Width);
+			int maxHeight = Convert.ToInt32 (aBoard.Frame.Height);
+			return new RectangleF (0, 0,maxWidth,maxHeight);
 		}
 
 		partial void btnStop (NSObject sender)

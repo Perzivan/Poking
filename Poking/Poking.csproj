@@ -109,7 +109,6 @@
     <Compile Include="PokingViewController.designer.cs">
       <DependentUpon>PokingViewController.cs</DependentUpon>
     </Compile>
-    <Compile Include="Board.cs" />
     <Compile Include="Smiley.cs" />
     <Compile Include="PokePoint.cs" />
   </ItemGroup>
