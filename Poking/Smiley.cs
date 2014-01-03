@@ -12,7 +12,7 @@ namespace Poking
 
 		private const string ImagePath = "smiley.png";
 
-		public Smiley(string imagePath, RectangleF moveBoundary) {
+		public Smiley(RectangleF moveBoundary) {
 			MoveBoundary = moveBoundary;
 			PointF p = GetNextPossition ();
 			Rect = new RectangleF (p.X, p.Y, MoveBoundary.Width, MoveBoundary.Height);

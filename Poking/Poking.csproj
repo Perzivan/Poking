@@ -96,6 +96,7 @@
     <BundleResource Include="Resources\smiley.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </BundleResource>
+    <BundleResource Include="Resources\Icon-60%402x.png" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Info.plist" />

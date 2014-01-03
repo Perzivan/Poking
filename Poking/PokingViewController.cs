@@ -52,17 +52,12 @@ namespace Poking
 		public override void ViewDidLoad ()
 		{
 			base.ViewDidLoad ();
-
 			// Perform any additional setup after loading the view, typically from a nib.
-
-			_Smiley = new Smiley ("smiley.png",GetMoveRectangle());
-
+			_Smiley = new Smiley (GetMoveRectangle());
 			View.Layer.AddSublayer (_Smiley.Layer);
 
 			_Timer = new System.Timers.Timer (2000);
-			_Timer.Elapsed += (sender, e) => {
-				MoveSmiley();
-			};
+			_Timer.Elapsed += (sender, e) => MoveSmiley ();
 
 			lblPoints.Text = "Points: 0";
 		}
@@ -88,7 +83,6 @@ namespace Poking
 			_Smiley.Layer.Position = _Smiley.GetNextPossition ();
 
 			CATransaction.Commit ();
-
 		}
 
 		private RectangleF GetMoveRectangle() {
