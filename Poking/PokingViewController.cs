@@ -2,10 +2,7 @@ using System;
 using System.Drawing;
 using MonoTouch.Foundation;
 using MonoTouch.UIKit;
-using System.Threading.Tasks;
-using System.Collections.Generic;
 using MonoTouch.CoreAnimation;
-using MonoTouch.CoreGraphics;
 using MonoTouch.AudioToolbox;
 
 
@@ -41,7 +38,7 @@ namespace Poking
 			if (touch != null) {
 				PointF Location = touch.LocationInView(View);
 		
-				if (_Smiley.Layer.Frame.Contains (Location)) {
+				if (_Smiley.Frame.Contains (Location)) {
 					AddPoints (1);
 					SystemSound.Vibrate.PlaySystemSound ();
 					MoveSmiley();
@@ -54,7 +51,7 @@ namespace Poking
 			base.ViewDidLoad ();
 			// Perform any additional setup after loading the view, typically from a nib.
 			_Smiley = new Smiley (GetMoveRectangle());
-			View.Layer.AddSublayer (_Smiley.Layer);
+			View.Layer.AddSublayer (_Smiley);
 
 			_Timer = new System.Timers.Timer (2000);
 			_Timer.Elapsed += (sender, e) => MoveSmiley ();
@@ -62,8 +59,8 @@ namespace Poking
 			lblPoints.Text = "Points: 0";
 		}
 	
-		public void AddPoints(int points){
-
+		public void AddPoints(int points)
+		{
 			PokePoint poke = new PokePoint (':',1);
 			int number = poke.GetPoints (lblPoints.Text);
 			lblPoints.Text = lblPoints.Text.Replace(number.ToString(),(number + points).ToString());
@@ -80,12 +77,13 @@ namespace Poking
 			CATransaction.Begin ();
 			CATransaction.AnimationDuration = 0.3;
 
-			_Smiley.Layer.Position = _Smiley.GetNextPossition ();
+			_Smiley.Position = _Smiley.GetNextPossition ();
 
 			CATransaction.Commit ();
 		}
 
-		private RectangleF GetMoveRectangle() {
+		private RectangleF GetMoveRectangle() 
+		{
 			int maxWidth = Convert.ToInt32 (aBoard.Frame.Width);
 			int maxHeight = Convert.ToInt32 (aBoard.Frame.Height);
 			return new RectangleF (0, 0,maxWidth,maxHeight);

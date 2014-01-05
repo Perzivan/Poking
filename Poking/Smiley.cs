@@ -5,22 +5,20 @@ using MonoTouch.CoreAnimation;
 
 namespace Poking
 {
-	public class Smiley {
+	public class Smiley  : CALayer {
 		public RectangleF Rect { get;private set;}
 		public RectangleF MoveBoundary { get;private set;}
-		public CALayer Layer { get;private set;}
-
 		private const string ImagePath = "smiley.png";
 
 		public Smiley(RectangleF moveBoundary) {
 			MoveBoundary = moveBoundary;
 			PointF p = GetNextPossition ();
 			Rect = new RectangleF (p.X, p.Y, MoveBoundary.Width, MoveBoundary.Height);
-			Layer = new CALayer ();
-			Layer.Bounds = new RectangleF (0,0,50,50);
-			Layer.Position = GetNextPossition ();
-			Layer.Contents = UIImage.FromFile (ImagePath).CGImage;
-			Layer.ContentsGravity = CALayer.GravityResizeAspectFill;
+
+			Bounds = new RectangleF (0,0,50,50);
+			Position = GetNextPossition ();
+			Contents = UIImage.FromFile (ImagePath).CGImage;
+			ContentsGravity = CALayer.GravityResizeAspectFill;
 		}
 
 		public PointF GetNextPossition() {
